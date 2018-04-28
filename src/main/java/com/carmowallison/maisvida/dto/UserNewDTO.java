@@ -2,41 +2,50 @@ package com.carmowallison.maisvida.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
+
 import com.carmowallison.maisvida.domain.User;
 
-public class UserDTO implements Serializable {
+public class UserNewDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	private String id;
+	@NotEmpty(message = "Preenchimento Obrigatório!")
+	@Length(min = 5, max = 255, message = "O tamanho precisa ser de 5 a 255 caracter!")
 	private String first_name;
+	
+	@NotEmpty(message = "Preenchimento Obrigatório!")
+	@Length(min = 5, max = 255, message = "O tamanho precisa ser de 5 a 255 caracter!")
 	private String last_name;
+	
+	@NotEmpty(message = "Preenchimento Obrigatório!")
+	@Email(message = "E-mail inválido!")
 	private String email;
+	
+	@NotEmpty(message = "Preenchimento Obrigatório!")
+	@Length(min = 5, max = 120, message = "O tamanho precisa ser de 5 a 120 caracter!")
+	private String senha;
+	
 	private boolean active;
 	private boolean status;
 	
-	public UserDTO() {
+	public UserNewDTO() {
 	}
 	
 	
-	public UserDTO(User obj) {		
-		id = obj.getId();
+	public UserNewDTO(User obj) {		
+
 		first_name = obj.getFirstName();
 		last_name = obj.getLastName();
 		email = obj.getEmail();
 		active = obj.isActive();
 		status = obj.isStatus();
+		senha = obj.getSenha();
 	}
 
-
-	public String getId() {
-		return id;
-	}
-
-
-	public void setId(String id) {
-		this.id = id;
-	}
 
 
 	public String getFirst_name() {
@@ -86,6 +95,16 @@ public class UserDTO implements Serializable {
 
 	public void setStatus(boolean status) {
 		this.status = status;
+	}
+
+
+	public String getSenha() {
+		return senha;
+	}
+
+
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 	
 }
