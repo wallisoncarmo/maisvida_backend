@@ -5,6 +5,8 @@ import java.io.Serializable;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Document
 public class User implements Serializable {
@@ -16,6 +18,8 @@ public class User implements Serializable {
 	private String first_name;
 	private String last_name;
 	private String email;
+	@JsonIgnore
+	private String senha;
 	private boolean active;
 	private boolean status;
 
@@ -23,7 +27,7 @@ public class User implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public User(String id, String first_name, String last_name, String email, boolean active, boolean status) {
+	public User(String id, String first_name, String last_name, String email, boolean active, boolean status, String senha) {
 		super();
 		this.id = id;
 		this.first_name = first_name;
@@ -31,6 +35,7 @@ public class User implements Serializable {
 		this.email = email;
 		this.active = active;
 		this.status = status;
+		this.senha = senha;
 	}
 
 	public String getId() {
@@ -79,6 +84,14 @@ public class User implements Serializable {
 
 	public void setStatus(boolean status) {
 		this.status = status;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
 	@Override
