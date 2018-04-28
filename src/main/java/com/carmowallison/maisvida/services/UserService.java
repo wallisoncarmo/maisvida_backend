@@ -1,4 +1,4 @@
-package com.carmowallison.maisvida.service;
+package com.carmowallison.maisvida.services;
 
 import java.util.List;
 import java.util.Optional;
@@ -29,6 +29,10 @@ public class UserService {
 	
 	public User insert(User obj) {
 		return repository.insert(obj);
+	}
+	public void delete(String id) {
+		findById(id);
+		repository.deleteById(id);
 	}
 	
 	public User fromDTO(UserDTO objDTO) {

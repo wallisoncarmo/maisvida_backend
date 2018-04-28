@@ -16,7 +16,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.carmowallison.maisvida.domain.User;
 import com.carmowallison.maisvida.dto.UserDTO;
 import com.carmowallison.maisvida.dto.UserNewDTO;
-import com.carmowallison.maisvida.service.UserService;
+import com.carmowallison.maisvida.services.UserService;
 
 @RestController
 @RequestMapping(value = "/users")
@@ -44,6 +44,12 @@ public class UserResource {
 		obj = service.insert(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).build();
+	}
+	
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<Void> delete(@PathVariable String id) {
+		service.delete(id);
+		return ResponseEntity.noContent().build();
 	}
 
 }
