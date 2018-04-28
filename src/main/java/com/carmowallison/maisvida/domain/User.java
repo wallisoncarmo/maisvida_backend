@@ -1,10 +1,14 @@
 package com.carmowallison.maisvida.domain;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import com.carmowallison.maisvida.domain.enums.Perfil;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
@@ -18,13 +22,16 @@ public class User implements Serializable {
 	private String first_name;
 	private String last_name;
 	private String email;
+	
 	@JsonIgnore
 	private String senha;
 	private boolean active;
 	private boolean status;
+	
+	private Set<Integer> perfis = new HashSet<>();
 
 	public User() {
-		// TODO Auto-generated constructor stub
+		addPerfil(Perfil.CLIENTE);
 	}
 
 	public User(String id, String first_name, String last_name, String email, boolean active, boolean status, String senha) {
@@ -36,6 +43,7 @@ public class User implements Serializable {
 		this.active = active;
 		this.status = status;
 		this.senha = senha;
+		addPerfil(Perfil.CLIENTE);
 	}
 
 	public String getId() {
@@ -93,6 +101,14 @@ public class User implements Serializable {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+	
+	public Set<Perfil> getPerfis() {
+		return perfis.stream().map(x -> Perfil.toEnum(x)).collect(Collectors.toSet());
+	}
+
+	public void addPerfil(Perfil perfil) {
+		perfis.add(perfil.getCod());
+	}	
 
 	@Override
 	public int hashCode() {

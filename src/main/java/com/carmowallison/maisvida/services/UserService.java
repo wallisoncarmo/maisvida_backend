@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.carmowallison.maisvida.domain.User;
@@ -17,6 +18,9 @@ public class UserService {
 
 	@Autowired
 	private UserRepository repository;
+
+	@Autowired
+	private BCryptPasswordEncoder bc;
 
 	public List<User> findAll() {
 		return repository.findAll();
@@ -58,9 +62,9 @@ public class UserService {
 			newObj.setLastName(obj.getLastName());
 		}
 		if (obj.getSenha() != null) {
-			newObj.setSenha(obj.getSenha());
-		}		
-		
+			newObj.setSenha(bc.encode(obj.getSenha()));
+		}
+
 	}
 
 	public User fromDTO(UserDTO objDTO) {
@@ -70,6 +74,6 @@ public class UserService {
 
 	public User fromDTO(UserNewDTO objDTO) {
 		return new User(null, objDTO.getFirst_name(), objDTO.getLastName(), objDTO.getEmail(), objDTO.isActive(),
-				objDTO.isStatus(), objDTO.getSenha());
+				objDTO.isStatus(), bc.encode(objDTO.getSenha()));
 	}
 }

@@ -7,5 +7,7 @@ import com.carmowallison.maisvida.domain.User;
 
 @Repository
 public interface UserRepository extends MongoRepository<User, String> {
-
+	
+	User findByEmailContaining(String text);
+	
 }
