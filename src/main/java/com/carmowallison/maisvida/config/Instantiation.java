@@ -28,11 +28,11 @@ public class Instantiation implements CommandLineRunner {
 		
 		userRepository.deleteAll();
 		
-		User wallison = new User(null, "Wallison", "Carmo", "wallisoncarmo@gmail.com", true, true,bc.encode("123"));
+		User wallison = new User(null, "Wallison", "wallisoncarmo@gmail.com", true, bc.encode("123"));
 		wallison.addPerfil(Perfil.ADMIN);
 		
-		User yasmin = new User(null, "yasmin", "Costa", "yasmin@gmail.com", true, false,bc.encode("123"));
-		User lucy = new User(null, "lucy", "Oliveira", "lucy@gmail.com", false, true,bc.encode("123"));
+		User yasmin = new User(null, "yasmin", "yasmin@gmail.com",  false,bc.encode("123"));
+		User lucy = new User(null, "lucy", "lucy@gmail.com",  true,bc.encode("123"));
 		
 		userRepository.saveAll(Arrays.asList(wallison,yasmin,lucy));
 		

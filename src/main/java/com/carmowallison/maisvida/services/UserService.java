@@ -50,16 +50,12 @@ public class UserService {
 	private void updateData(User newObj, User obj) {
 
 		newObj.setActive(obj.isActive());
-		newObj.setStatus(obj.isStatus());
 
 		if (obj.getEmail() != null) {
 			newObj.setEmail(obj.getEmail());
 		}
-		if (obj.getFirstName() != null) {
-			newObj.setFirstName(obj.getFirstName());
-		}
-		if (obj.getLastName() != null) {
-			newObj.setLastName(obj.getLastName());
+		if (obj.getName() != null) {
+			newObj.setName(obj.getName());
 		}
 		if (obj.getSenha() != null) {
 			newObj.setSenha(bc.encode(obj.getSenha()));
@@ -68,12 +64,10 @@ public class UserService {
 	}
 
 	public User fromDTO(UserDTO objDTO) {
-		return new User(objDTO.getId(), objDTO.getFirst_name(), objDTO.getLastName(), objDTO.getEmail(),
-				objDTO.isActive(), objDTO.isStatus(), null);
+		return new User(objDTO.getId(), objDTO.getName(), objDTO.getEmail(),objDTO.isActive(), null);
 	}
 
 	public User fromDTO(UserNewDTO objDTO) {
-		return new User(null, objDTO.getFirst_name(), objDTO.getLastName(), objDTO.getEmail(), objDTO.isActive(),
-				objDTO.isStatus(), bc.encode(objDTO.getSenha()));
+		return new User(null, objDTO.getName(), objDTO.getEmail(), objDTO.isActive(),bc.encode(objDTO.getSenha()));
 	}
 }

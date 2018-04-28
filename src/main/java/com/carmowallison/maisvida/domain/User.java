@@ -11,37 +11,32 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import com.carmowallison.maisvida.domain.enums.Perfil;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-
 @Document
 public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	private String id;
-	private String first_name;
-	private String last_name;
+	private String name;
 	private String email;
-	
+
 	@JsonIgnore
 	private String senha;
 	private boolean active;
-	private boolean status;
-	
+
 	private Set<Integer> perfis = new HashSet<>();
 
 	public User() {
 		addPerfil(Perfil.CLIENTE);
 	}
 
-	public User(String id, String first_name, String last_name, String email, boolean active, boolean status, String senha) {
+	public User(String id, String name, String email, boolean active, String senha) {
 		super();
 		this.id = id;
-		this.first_name = first_name;
-		this.last_name = last_name;
+		this.name = name;
 		this.email = email;
 		this.active = active;
-		this.status = status;
 		this.senha = senha;
 		addPerfil(Perfil.CLIENTE);
 	}
@@ -52,22 +47,6 @@ public class User implements Serializable {
 
 	public void setId(String id) {
 		this.id = id;
-	}
-
-	public String getFirstName() {
-		return first_name;
-	}
-
-	public void setFirstName(String first_name) {
-		this.first_name = first_name;
-	}
-
-	public String getLastName() {
-		return last_name;
-	}
-
-	public void setLastName(String last_name) {
-		this.last_name = last_name;
 	}
 
 	public String getEmail() {
@@ -86,14 +65,6 @@ public class User implements Serializable {
 		this.active = active;
 	}
 
-	public boolean isStatus() {
-		return status;
-	}
-
-	public void setStatus(boolean status) {
-		this.status = status;
-	}
-
 	public String getSenha() {
 		return senha;
 	}
@@ -101,14 +72,26 @@ public class User implements Serializable {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	
+
 	public Set<Perfil> getPerfis() {
 		return perfis.stream().map(x -> Perfil.toEnum(x)).collect(Collectors.toSet());
 	}
 
 	public void addPerfil(Perfil perfil) {
 		perfis.add(perfil.getCod());
-	}	
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setPerfis(Set<Integer> perfis) {
+		this.perfis = perfis;
+	}
 
 	@Override
 	public int hashCode() {

@@ -9,11 +9,9 @@ public class UserDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private String id;
-	private String first_name;
-	private String last_name;
+	private String name;
 	private String email;
 	private boolean active;
-	private boolean status;
 	
 	public UserDTO() {
 	}
@@ -21,11 +19,9 @@ public class UserDTO implements Serializable {
 	
 	public UserDTO(User obj) {		
 		id = obj.getId();
-		first_name = obj.getFirstName();
-		last_name = obj.getLastName();
 		email = obj.getEmail();
+		name = obj.getName();
 		active = obj.isActive();
-		status = obj.isStatus();
 	}
 
 
@@ -37,27 +33,6 @@ public class UserDTO implements Serializable {
 	public void setId(String id) {
 		this.id = id;
 	}
-
-
-	public String getFirst_name() {
-		return first_name;
-	}
-
-
-	public void setFirstName(String first_name) {
-		this.first_name = first_name;
-	}
-
-
-	public String getLastName() {
-		return last_name;
-	}
-
-
-	public void setLastName(String last_name) {
-		this.last_name = last_name;
-	}
-
 
 	public String getEmail() {
 		return email;
@@ -79,13 +54,13 @@ public class UserDTO implements Serializable {
 	}
 
 
-	public boolean isStatus() {
-		return status;
+	public String getName() {
+		return name;
 	}
 
 
-	public void setStatus(boolean status) {
-		this.status = status;
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 }
