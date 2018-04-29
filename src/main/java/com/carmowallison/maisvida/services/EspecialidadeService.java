@@ -43,8 +43,6 @@ public class EspecialidadeService {
 	}
 
 	private void updateData(Especialidade newObj, Especialidade obj) {
-
-		newObj.setActive(obj.isActive());
 		if (obj.getName() != null) {
 			newObj.setName(obj.getName());
 		}
@@ -52,7 +50,7 @@ public class EspecialidadeService {
 	}
 
 	public Especialidade fromDTO(EspecialidadeDTO objDTO) {
-		return new Especialidade(objDTO.getId(), objDTO.getName(), objDTO.isActive());
+		return new Especialidade(objDTO.getId(), objDTO.getName());
 	}
 
 }

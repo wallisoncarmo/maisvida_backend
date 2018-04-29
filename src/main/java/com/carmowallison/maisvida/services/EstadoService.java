@@ -44,7 +44,6 @@ public class EstadoService {
 
 	private void updateData(Estado newObj, Estado obj) {
 
-		newObj.setActive(obj.isActive());
 		if (obj.getName() != null) {
 			newObj.setName(obj.getName());
 		}
@@ -52,7 +51,7 @@ public class EstadoService {
 	}
 
 	public Estado fromDTO(EstadoDTO objDTO) {
-		return new Estado(objDTO.getId(), objDTO.getName(), objDTO.isActive());
+		return new Estado(objDTO.getId(), objDTO.getName());
 	}
 
 }

@@ -13,17 +13,15 @@ public class Estado implements Serializable {
 	@Id
 	private String id;
 	private String name;
-	private boolean active;
 
 	public Estado() {
 
 	}
 
-	public Estado(String id, String name, boolean active) {
+	public Estado(String id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.active = active;
 	}
 
 	public String getId() {
@@ -32,14 +30,6 @@ public class Estado implements Serializable {
 
 	public void setId(String id) {
 		this.id = id;
-	}
-
-	public boolean isActive() {
-		return active;
-	}
-
-	public void setActive(boolean active) {
-		this.active = active;
 	}
 
 	public String getName() {

@@ -51,22 +51,33 @@ public class MedicoService {
 		if (obj.getEmail() != null) {
 			newObj.setEmail(obj.getEmail());
 		}
+
 		if (obj.getFirstName() != null) {
 			newObj.setFirstName(obj.getFirstName());
 		}
+
 		if (obj.getLastName() != null) {
 			newObj.setLastName(obj.getLastName());
+		}
+
+		if (obj.getEspecialidade() != null) {
+			newObj.setEspecialidade(obj.getEspecialidade());
+		}
+
+		if (obj.getCidade() != null) {
+			newObj.setCidade(obj.getCidade());
 		}
 
 	}
 
 	public Medico fromDTO(MedicoDTO objDTO) {
 		return new Medico(objDTO.getId(), objDTO.getFirst_name(), objDTO.getLastName(), objDTO.getEmail(),
-				objDTO.isActive(), objDTO.isStatus());
+				objDTO.isActive(), objDTO.isStatus(), objDTO.getEspecialidade(), objDTO.getCidade());
 	}
 
 	public Medico fromDTO(MedicoNewDTO objDTO) {
+
 		return new Medico(null, objDTO.getFirst_name(), objDTO.getLastName(), objDTO.getEmail(), objDTO.isActive(),
-				objDTO.isStatus());
+				objDTO.isStatus(), objDTO.getEspecialidade(), objDTO.getCidade());
 	}
 }

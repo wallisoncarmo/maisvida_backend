@@ -13,17 +13,17 @@ public class Cidade implements Serializable {
 	@Id
 	private String id;
 	private String name;
-	private boolean active;
+	private Estado estado;
 
 	public Cidade() {
 
 	}
 
-	public Cidade(String id, String name, boolean active) {
+	public Cidade(String id, String name, Estado estado) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.active = active;
+		this.estado = estado;
 	}
 
 	public String getId() {
@@ -34,20 +34,20 @@ public class Cidade implements Serializable {
 		this.id = id;
 	}
 
-	public boolean isActive() {
-		return active;
-	}
-
-	public void setActive(boolean active) {
-		this.active = active;
-	}
-
 	public String getName() {
 		return name;
 	}
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public Estado getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Estado estado) {
+		this.estado = estado;
 	}
 
 	@Override

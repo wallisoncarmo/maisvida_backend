@@ -43,8 +43,11 @@ public class CidadeService {
 	}
 
 	private void updateData(Cidade newObj, Cidade obj) {
-
-		newObj.setActive(obj.isActive());
+		
+		if (obj.getEstado() != null) {
+			newObj.setEstado(obj.getEstado());
+		}
+		
 		if (obj.getName() != null) {
 			newObj.setName(obj.getName());
 		}
@@ -52,7 +55,7 @@ public class CidadeService {
 	}
 
 	public Cidade fromDTO(CidadeDTO objDTO) {
-		return new Cidade(objDTO.getId(), objDTO.getName(), objDTO.isActive());
+		return new Cidade(objDTO.getId(), objDTO.getName(), objDTO.getEstado());
 	}
 
 }

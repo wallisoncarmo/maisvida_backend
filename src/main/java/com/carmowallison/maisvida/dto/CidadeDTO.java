@@ -3,6 +3,7 @@ package com.carmowallison.maisvida.dto;
 import java.io.Serializable;
 
 import com.carmowallison.maisvida.domain.Cidade;
+import com.carmowallison.maisvida.domain.Estado;
 
 public class CidadeDTO implements Serializable {
 
@@ -10,7 +11,7 @@ public class CidadeDTO implements Serializable {
 	
 	private String id;
 	private String name;
-	private boolean active;
+	private Estado estado;
 	
 	public CidadeDTO() {
 	}
@@ -18,7 +19,7 @@ public class CidadeDTO implements Serializable {
 	public CidadeDTO(Cidade obj) {		
 		id = obj.getId();
 		name = obj.getName();
-		active = obj.isActive();
+		estado = obj.getEstado();
 	}
 
 
@@ -31,16 +32,6 @@ public class CidadeDTO implements Serializable {
 		this.id = id;
 	}
 
-	public boolean isActive() {
-		return active;
-	}
-
-
-	public void setActive(boolean active) {
-		this.active = active;
-	}
-
-
 	public String getName() {
 		return name;
 	}
@@ -49,5 +40,13 @@ public class CidadeDTO implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	public Estado getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Estado estado) {
+		this.estado = estado;
+	}	
 	
 }

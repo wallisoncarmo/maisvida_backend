@@ -2,6 +2,8 @@ package com.carmowallison.maisvida.dto;
 
 import java.io.Serializable;
 
+import com.carmowallison.maisvida.domain.Cidade;
+import com.carmowallison.maisvida.domain.Especialidade;
 import com.carmowallison.maisvida.domain.Medico;
 
 public class MedicoDTO implements Serializable {
@@ -14,6 +16,8 @@ public class MedicoDTO implements Serializable {
 	private String email;
 	private boolean active;
 	private boolean status;
+	private Especialidade especialidade;
+	private Cidade cidade;
 	
 	public MedicoDTO() {
 	}
@@ -26,6 +30,8 @@ public class MedicoDTO implements Serializable {
 		email = obj.getEmail();
 		active = obj.isActive();
 		status = obj.isStatus();
+		especialidade = obj.getEspecialidade();
+		cidade = obj.getCidade();
 	}
 
 
@@ -87,5 +93,25 @@ public class MedicoDTO implements Serializable {
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
+
+
+	public Especialidade getEspecialidade() {
+		return especialidade;
+	}
+
+
+	public void setEspecialidade(Especialidade especialidade) {
+		this.especialidade = especialidade;
+	}
+
+
+	public Cidade getCidade() {
+		return cidade;
+	}
+
+
+	public void setCidade(Cidade cidade) {
+		this.cidade = cidade;
+	}	
 	
 }

@@ -10,7 +10,6 @@ public class EstadoDTO implements Serializable {
 	
 	private String id;
 	private String name;
-	private boolean active;
 	
 	public EstadoDTO() {
 	}
@@ -18,7 +17,6 @@ public class EstadoDTO implements Serializable {
 	public EstadoDTO(Estado obj) {		
 		id = obj.getId();
 		name = obj.getName();
-		active = obj.isActive();
 	}
 
 
@@ -30,16 +28,6 @@ public class EstadoDTO implements Serializable {
 	public void setId(String id) {
 		this.id = id;
 	}
-
-	public boolean isActive() {
-		return active;
-	}
-
-
-	public void setActive(boolean active) {
-		this.active = active;
-	}
-
 
 	public String getName() {
 		return name;

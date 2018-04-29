@@ -7,6 +7,8 @@ import javax.validation.constraints.NotEmpty;
 
 import org.hibernate.validator.constraints.Length;
 
+import com.carmowallison.maisvida.domain.Cidade;
+import com.carmowallison.maisvida.domain.Especialidade;
 import com.carmowallison.maisvida.domain.Medico;
 
 public class MedicoNewDTO implements Serializable {
@@ -27,6 +29,9 @@ public class MedicoNewDTO implements Serializable {
 
 	private boolean active;
 	private boolean status;
+	
+	private Especialidade especialidade;
+	private Cidade cidade;
 
 	public MedicoNewDTO() {
 	}
@@ -37,6 +42,8 @@ public class MedicoNewDTO implements Serializable {
 		email = obj.getEmail();
 		active = obj.isActive();
 		status = obj.isStatus();
+		especialidade = obj.getEspecialidade();
+		cidade = obj.getCidade();
 	}
 
 	public String getFirst_name() {
@@ -77,6 +84,22 @@ public class MedicoNewDTO implements Serializable {
 
 	public void setStatus(boolean status) {
 		this.status = status;
+	}
+
+	public Especialidade getEspecialidade() {
+		return especialidade;
+	}
+
+	public void setEspecialidade(Especialidade especialidade) {
+		this.especialidade = especialidade;
+	}
+
+	public Cidade getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(Cidade cidade) {
+		this.cidade = cidade;
 	}
 
 }

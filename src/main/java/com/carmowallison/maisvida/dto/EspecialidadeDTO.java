@@ -10,7 +10,6 @@ public class EspecialidadeDTO implements Serializable {
 	
 	private String id;
 	private String name;
-	private boolean active;
 	
 	public EspecialidadeDTO() {
 	}
@@ -18,7 +17,6 @@ public class EspecialidadeDTO implements Serializable {
 	public EspecialidadeDTO(Especialidade obj) {		
 		id = obj.getId();
 		name = obj.getName();
-		active = obj.isActive();
 	}
 
 
@@ -29,15 +27,6 @@ public class EspecialidadeDTO implements Serializable {
 
 	public void setId(String id) {
 		this.id = id;
-	}
-
-	public boolean isActive() {
-		return active;
-	}
-
-
-	public void setActive(boolean active) {
-		this.active = active;
 	}
 
 

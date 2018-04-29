@@ -16,15 +16,17 @@ public class Medico implements Serializable {
 	private String first_name;
 	private String last_name;
 	private String email;
-
 	private boolean active;
 	private boolean status;
+	
+	private Especialidade especialidade;
+	private Cidade cidade;
 
 	public Medico() {
 		
 	}
 
-	public Medico(String id, String first_name, String last_name, String email, boolean active, boolean status) {
+	public Medico(String id, String first_name, String last_name, String email, boolean active, boolean status,Especialidade especialidade,Cidade cidade) {
 		super();
 		this.id = id;
 		this.first_name = first_name;
@@ -32,6 +34,8 @@ public class Medico implements Serializable {
 		this.email = email;
 		this.active = active;
 		this.status = status;
+		this.especialidade = especialidade;
+		this.cidade = cidade;
 	}
 
 	public String getId() {
@@ -80,6 +84,22 @@ public class Medico implements Serializable {
 
 	public void setStatus(boolean status) {
 		this.status = status;
+	}
+
+	public Especialidade getEspecialidade() {
+		return especialidade;
+	}
+
+	public void setEspecialidade(Especialidade especialidade) {
+		this.especialidade = especialidade;
+	}
+
+	public Cidade getCidade() {
+		return cidade;
+	}
+
+	public void setCidade(Cidade cidade) {
+		this.cidade = cidade;
 	}
 
 	@Override
