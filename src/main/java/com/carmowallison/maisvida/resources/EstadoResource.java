@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.carmowallison.maisvida.domain.Cidade;
 import com.carmowallison.maisvida.domain.Estado;
 import com.carmowallison.maisvida.dto.EstadoDTO;
 import com.carmowallison.maisvida.services.EstadoService;
@@ -66,4 +67,11 @@ public class EstadoResource {
 		return ResponseEntity.noContent().build();
 	}
 
+	@ApiOperation(value="Busca as cidades de um estado")
+	@RequestMapping(value = "/{id}/cidade", method = RequestMethod.GET)
+	public ResponseEntity<List<Cidade>> findCidades(@PathVariable String id) {
+		Estado obj = service.findById(id);
+		return ResponseEntity.ok().body(obj.getCidades());
+	}
+	
 }

@@ -3,7 +3,10 @@ package com.carmowallison.maisvida.domain;
 import java.io.Serializable;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import com.carmowallison.maisvida.dto.EstadoDTO;
 
 @Document
 public class Cidade implements Serializable {
@@ -13,13 +16,14 @@ public class Cidade implements Serializable {
 	@Id
 	private String id;
 	private String name;
-	private Estado estado;
+	
+	private EstadoDTO estado;
 
 	public Cidade() {
 
 	}
 
-	public Cidade(String id, String name, Estado estado) {
+	public Cidade(String id, String name, EstadoDTO estado) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -42,11 +46,11 @@ public class Cidade implements Serializable {
 		this.name = name;
 	}
 	
-	public Estado getEstado() {
+	public EstadoDTO getEstado() {
 		return estado;
 	}
 
-	public void setEstado(Estado estado) {
+	public void setEstado(EstadoDTO estado) {
 		this.estado = estado;
 	}
 

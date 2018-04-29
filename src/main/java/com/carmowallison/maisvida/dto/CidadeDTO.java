@@ -3,7 +3,6 @@ package com.carmowallison.maisvida.dto;
 import java.io.Serializable;
 
 import com.carmowallison.maisvida.domain.Cidade;
-import com.carmowallison.maisvida.domain.Estado;
 
 public class CidadeDTO implements Serializable {
 
@@ -11,7 +10,7 @@ public class CidadeDTO implements Serializable {
 	
 	private String id;
 	private String name;
-	private Estado estado;
+	private EstadoDTO estado;
 	
 	public CidadeDTO() {
 	}
@@ -41,11 +40,11 @@ public class CidadeDTO implements Serializable {
 		this.name = name;
 	}
 
-	public Estado getEstado() {
+	public EstadoDTO getEstado() {
 		return estado;
 	}
 
-	public void setEstado(Estado estado) {
+	public void setEstado(EstadoDTO estado) {
 		this.estado = estado;
 	}	
 	

@@ -13,6 +13,7 @@ import com.carmowallison.maisvida.domain.Estado;
 import com.carmowallison.maisvida.domain.Medico;
 import com.carmowallison.maisvida.domain.User;
 import com.carmowallison.maisvida.domain.enums.Perfil;
+import com.carmowallison.maisvida.dto.EstadoDTO;
 import com.carmowallison.maisvida.repository.CidadeRepository;
 import com.carmowallison.maisvida.repository.EspecialidadeRepository;
 import com.carmowallison.maisvida.repository.EstadoRepository;
@@ -69,19 +70,26 @@ public class Instantiation implements CommandLineRunner {
 		estadoRepository.saveAll(Arrays.asList(e1, e2, e3));
 
 		// BLOCO CIDADE
-		Cidade c1 = new Cidade(null, "Brasília",e1);
-		Cidade c2 = new Cidade(null, "Taguatinga",e1);
-		Cidade c3 = new Cidade(null, "Ceilândia",e1);
+		Cidade c1 = new Cidade(null, "Brasília", new EstadoDTO(e1));
+		Cidade c2 = new Cidade(null, "Taguatinga",new EstadoDTO(e1));
+		Cidade c3 = new Cidade(null, "Ceilândia",new EstadoDTO(e1));
 
-		Cidade c4 = new Cidade(null, "Campinas",e2);
-		Cidade c5 = new Cidade(null, "Taguatinga",e2);
-		Cidade c6 = new Cidade(null, "Ceilândia",e2);
+		Cidade c4 = new Cidade(null, "Campinas",new EstadoDTO(e2));
+		Cidade c5 = new Cidade(null, "Taguatinga",new EstadoDTO(e2));
+		Cidade c6 = new Cidade(null, "Ceilândia",new EstadoDTO(e2));
 
-		Cidade c7 = new Cidade(null, "Petrópolis",e3);
-		Cidade c8 = new Cidade(null, "Angra dos Reis",e3);
-		Cidade c9 = new Cidade(null, "Duque de Caxias",e3);
+		Cidade c7 = new Cidade(null, "Petrópolis",new EstadoDTO(e3));
+		Cidade c8 = new Cidade(null, "Angra dos Reis",new EstadoDTO(e3));
+		Cidade c9 = new Cidade(null, "Duque de Caxias",new EstadoDTO(e3));
 
 		cidadeRepository.saveAll(Arrays.asList(c1, c2, c3, c4, c5, c6, c7, c8, c9));
+		
+		
+		e1.getCidades().addAll(Arrays.asList(c1,c2,c3));
+		e2.getCidades().addAll(Arrays.asList(c4,c5,c6));
+		e3.getCidades().addAll(Arrays.asList(c7,c8,c9));
+		
+		estadoRepository.saveAll(Arrays.asList(e1, e2, e3));
 
 		// BLOCO EPECIALIDADE
 		Especialidade s1 = new Especialidade(null, "Cardiologia");

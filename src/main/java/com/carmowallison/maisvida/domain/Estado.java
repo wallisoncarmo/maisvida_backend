@@ -1,8 +1,11 @@
 package com.carmowallison.maisvida.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
@@ -13,7 +16,9 @@ public class Estado implements Serializable {
 	@Id
 	private String id;
 	private String name;
-
+	
+	@DBRef(lazy = true)
+	private List<Cidade> cidades = new ArrayList<>();
 	public Estado() {
 
 	}
@@ -38,6 +43,14 @@ public class Estado implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public List<Cidade> getCidades() {
+		return cidades;
+	}
+
+	public void setCidades(List<Cidade> cidades) {
+		this.cidades = cidades;
 	}
 
 	@Override
