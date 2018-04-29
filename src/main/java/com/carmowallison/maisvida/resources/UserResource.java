@@ -1,4 +1,4 @@
-package com.carmowallison.maisvida.resource;
+package com.carmowallison.maisvida.resources;
 
 import java.net.URI;
 import java.util.List;
@@ -18,6 +18,8 @@ import com.carmowallison.maisvida.dto.UserDTO;
 import com.carmowallison.maisvida.dto.UserNewDTO;
 import com.carmowallison.maisvida.services.UserService;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping(value = "/users")
 public class UserResource {
@@ -25,19 +27,22 @@ public class UserResource {
 	@Autowired
 	private UserService service;
 
+	@ApiOperation(value = "Busca Todos os Users")
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<UserDTO>> findAll() {
 		List<User> list = service.findAll();
 		List<UserDTO> listDTO = list.stream().map(obj -> new UserDTO(obj)).collect(Collectors.toList());
 		return ResponseEntity.ok().body(listDTO);
 	}
-
+	
+	@ApiOperation(value = "Busca por um User pelo seu id")
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<UserDTO> findById(@PathVariable String id) {
 		User obj = service.findById(id);
 		return ResponseEntity.ok().body(new UserDTO(obj));
 	}
 	
+	@ApiOperation(value = "insere um novo User")
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Void> insert(@RequestBody UserNewDTO objDTO) {
 		User obj = service.fromDTO(objDTO);
@@ -46,6 +51,7 @@ public class UserResource {
 		return ResponseEntity.created(uri).build();
 	}
 	
+	@ApiOperation(value = "Atualiza um User")
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Void> update(@PathVariable String id, @RequestBody UserNewDTO objDTO) {
 		User obj = service.fromDTO(objDTO);
@@ -54,6 +60,7 @@ public class UserResource {
 		return ResponseEntity.noContent().build();
 	}
 	
+	@ApiOperation(value = "Deleta um User")
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable String id) {
 		service.delete(id);

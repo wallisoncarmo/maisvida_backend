@@ -1,4 +1,4 @@
-package com.carmowallison.maisvida.resource.exception;
+package com.carmowallison.maisvida.resources.exception;
 
 import java.io.Serializable;
 

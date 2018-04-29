@@ -1,4 +1,4 @@
-package com.carmowallison.maisvida.resource;
+package com.carmowallison.maisvida.resources;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -12,13 +12,16 @@ import com.carmowallison.maisvida.security.JWTUtil;
 import com.carmowallison.maisvida.security.UserSS;
 import com.carmowallison.maisvida.services.UserSService;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping(value = "/auth")
 public class AuthResource {
 
 	@Autowired
 	private JWTUtil jwtUtil;	
-
+	
+	@ApiOperation(value="Recupera um novo token")
 	@RequestMapping(value = "/refresh_token", method = RequestMethod.POST)
 	public ResponseEntity<Void> refreshToken(HttpServletResponse response) {
 		UserSS user = UserSService.authenticated();

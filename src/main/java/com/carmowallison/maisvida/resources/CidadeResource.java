@@ -1,4 +1,4 @@
-package com.carmowallison.maisvida.resource;
+package com.carmowallison.maisvida.resources;
 
 import java.net.URI;
 import java.util.List;
@@ -17,26 +17,31 @@ import com.carmowallison.maisvida.domain.Cidade;
 import com.carmowallison.maisvida.dto.CidadeDTO;
 import com.carmowallison.maisvida.services.CidadeService;
 
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping(value = "/cidades")
 public class CidadeResource {
 
 	@Autowired
 	private CidadeService service;
-
+	
+	@ApiOperation(value="Busca todas as cidades")
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<CidadeDTO>> findAll() {
 		List<Cidade> list = service.findAll();
 		List<CidadeDTO> listDTO = list.stream().map(obj -> new CidadeDTO(obj)).collect(Collectors.toList());
 		return ResponseEntity.ok().body(listDTO);
 	}
-
+	
+	@ApiOperation(value="Busca pelo id da cidade")
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<CidadeDTO> findById(@PathVariable String id) {
 		Cidade obj = service.findById(id);
 		return ResponseEntity.ok().body(new CidadeDTO(obj));
 	}
 	
+	@ApiOperation(value="Inseri uma nova cidade")
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Void> insert(@RequestBody CidadeDTO objDTO) {
 		Cidade obj = service.fromDTO(objDTO);
@@ -45,6 +50,7 @@ public class CidadeResource {
 		return ResponseEntity.created(uri).build();
 	}
 	
+	@ApiOperation(value="Atualiza a cidade")
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Void> update(@PathVariable String id, @RequestBody CidadeDTO objDTO) {
 		Cidade obj = service.fromDTO(objDTO);
@@ -53,6 +59,7 @@ public class CidadeResource {
 		return ResponseEntity.noContent().build();
 	}
 	
+	@ApiOperation(value="Exclui uma cidade")
 	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
 	public ResponseEntity<Void> delete(@PathVariable String id) {
 		service.delete(id);
