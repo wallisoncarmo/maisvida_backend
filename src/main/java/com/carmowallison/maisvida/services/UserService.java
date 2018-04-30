@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import com.carmowallison.maisvida.domain.User;
 import com.carmowallison.maisvida.dto.UserDTO;
 import com.carmowallison.maisvida.dto.UserNewDTO;
-import com.carmowallison.maisvida.repository.UserRepository;
+import com.carmowallison.maisvida.repositoties.UserRepository;
 import com.carmowallison.maisvida.services.exceptions.ObjectNotFoundException;
 
 @Service

@@ -3,7 +3,6 @@ package com.carmowallison.maisvida.domain;
 import java.io.Serializable;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.carmowallison.maisvida.dto.EstadoDTO;

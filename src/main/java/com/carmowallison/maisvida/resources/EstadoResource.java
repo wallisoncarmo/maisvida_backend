@@ -68,7 +68,7 @@ public class EstadoResource {
 	}
 
 	@ApiOperation(value="Busca as cidades de um estado")
-	@RequestMapping(value = "/{id}/cidade", method = RequestMethod.GET)
+	@RequestMapping(value = "/{id}/cidades", method = RequestMethod.GET)
 	public ResponseEntity<List<Cidade>> findCidades(@PathVariable String id) {
 		Estado obj = service.findById(id);
 		return ResponseEntity.ok().body(obj.getCidades());

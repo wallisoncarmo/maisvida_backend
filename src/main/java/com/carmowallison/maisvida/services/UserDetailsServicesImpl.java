@@ -7,7 +7,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.carmowallison.maisvida.domain.User;
-import com.carmowallison.maisvida.repository.UserRepository;
+import com.carmowallison.maisvida.repositoties.UserRepository;
 import com.carmowallison.maisvida.security.UserSS;
 
 @Service

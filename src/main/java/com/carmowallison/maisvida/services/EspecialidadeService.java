@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.carmowallison.maisvida.domain.Especialidade;
 import com.carmowallison.maisvida.dto.EspecialidadeDTO;
-import com.carmowallison.maisvida.repository.EspecialidadeRepository;
+import com.carmowallison.maisvida.repositoties.EspecialidadeRepository;
 import com.carmowallison.maisvida.services.exceptions.ObjectNotFoundException;
 
 @Service

@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import com.carmowallison.maisvida.domain.Medico;
 import com.carmowallison.maisvida.dto.MedicoDTO;
 import com.carmowallison.maisvida.dto.MedicoNewDTO;
-import com.carmowallison.maisvida.repository.MedicoRepository;
+import com.carmowallison.maisvida.repositoties.MedicoRepository;
 import com.carmowallison.maisvida.services.exceptions.ObjectNotFoundException;
 
 @Service
@@ -20,6 +20,12 @@ public class MedicoService {
 
 	@Autowired
 	private MedicoRepository repository;
+	
+	@Autowired
+	private EspecialidadeService especialidadeService;
+	
+	@Autowired
+	private CidadeService cidadeService;
 
 	public List<Medico> findAll() {
 		return repository.findAll();
@@ -78,8 +84,7 @@ public class MedicoService {
 				objDTO.isActive(), objDTO.isStatus(), objDTO.getEspecialidade(), objDTO.getCidade());
 	}
 
-	public Medico fromDTO(MedicoNewDTO objDTO) {
-
+	public Medico fromDTO(MedicoNewDTO objDTO) {	
 		return new Medico(null, objDTO.getFirst_name(), objDTO.getLastName(), objDTO.getEmail(), objDTO.isActive(),
 				objDTO.isStatus(), objDTO.getEspecialidade(), objDTO.getCidade());
 	}

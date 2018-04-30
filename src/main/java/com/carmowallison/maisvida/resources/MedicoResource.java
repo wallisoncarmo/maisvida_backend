@@ -56,6 +56,7 @@ public class MedicoResource {
 	@ApiOperation(value = "Atualiza um Médico")
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<Void> update(@PathVariable String id, @RequestBody MedicoNewDTO objDTO) {
+		
 		Medico obj = service.fromDTO(objDTO);
 		obj.setId(id);
 		obj = service.update(obj);

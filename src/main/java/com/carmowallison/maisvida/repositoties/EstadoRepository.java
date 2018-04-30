@@ -1,4 +1,4 @@
-package com.carmowallison.maisvida.repository;
+package com.carmowallison.maisvida.repositoties;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;

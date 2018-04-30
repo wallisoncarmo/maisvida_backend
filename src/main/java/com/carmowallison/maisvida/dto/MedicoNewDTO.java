@@ -100,6 +100,6 @@ public class MedicoNewDTO implements Serializable {
 
 	public void setCidade(Cidade cidade) {
 		this.cidade = cidade;
-	}
+	}	
 
 }

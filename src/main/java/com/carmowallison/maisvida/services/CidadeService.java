@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.carmowallison.maisvida.domain.Cidade;
 import com.carmowallison.maisvida.dto.CidadeDTO;
-import com.carmowallison.maisvida.repository.CidadeRepository;
+import com.carmowallison.maisvida.repositoties.CidadeRepository;
 import com.carmowallison.maisvida.services.exceptions.ObjectNotFoundException;
 
 @Service

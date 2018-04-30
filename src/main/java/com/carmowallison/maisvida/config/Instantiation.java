@@ -14,11 +14,11 @@ import com.carmowallison.maisvida.domain.Medico;
 import com.carmowallison.maisvida.domain.User;
 import com.carmowallison.maisvida.domain.enums.Perfil;
 import com.carmowallison.maisvida.dto.EstadoDTO;
-import com.carmowallison.maisvida.repository.CidadeRepository;
-import com.carmowallison.maisvida.repository.EspecialidadeRepository;
-import com.carmowallison.maisvida.repository.EstadoRepository;
-import com.carmowallison.maisvida.repository.MedicoRepository;
-import com.carmowallison.maisvida.repository.UserRepository;
+import com.carmowallison.maisvida.repositoties.CidadeRepository;
+import com.carmowallison.maisvida.repositoties.EspecialidadeRepository;
+import com.carmowallison.maisvida.repositoties.EstadoRepository;
+import com.carmowallison.maisvida.repositoties.MedicoRepository;
+import com.carmowallison.maisvida.repositoties.UserRepository;
 
 @Configuration
 public class Instantiation implements CommandLineRunner {
@@ -54,7 +54,7 @@ public class Instantiation implements CommandLineRunner {
 		// CRIA NOVA BASE
 
 		// BLOCO USUARIOS
-		User wallison = new User(null, "Wallison", "wallisoncarmo@gmail.com", true, bc.encode("123"));
+		User wallison = new User(null, "Wallison", "wallisoncarmo01@gmail.com", true, bc.encode("123"));
 		wallison.addPerfil(Perfil.ADMIN);
 
 		User yasmin = new User(null, "yasmin", "yasmin@gmail.com", false, bc.encode("123"));
@@ -75,8 +75,8 @@ public class Instantiation implements CommandLineRunner {
 		Cidade c3 = new Cidade(null, "Ceilândia",new EstadoDTO(e1));
 
 		Cidade c4 = new Cidade(null, "Campinas",new EstadoDTO(e2));
-		Cidade c5 = new Cidade(null, "Taguatinga",new EstadoDTO(e2));
-		Cidade c6 = new Cidade(null, "Ceilândia",new EstadoDTO(e2));
+		Cidade c5 = new Cidade(null, "Rio 1",new EstadoDTO(e2));
+		Cidade c6 = new Cidade(null, "Rio 2",new EstadoDTO(e2));
 
 		Cidade c7 = new Cidade(null, "Petrópolis",new EstadoDTO(e3));
 		Cidade c8 = new Cidade(null, "Angra dos Reis",new EstadoDTO(e3));
